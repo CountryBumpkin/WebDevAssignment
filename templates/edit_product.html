@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Product - Jack's Healthy Food Shop{% endblock %}
+
+{% block content %}
+    <h1>Edit Product</h1>
+
+    <form action="{{ url_for('product_routes.update_product', product_id=product.id) }}" method="POST" enctype="multipart/form-data">
+        
+        <!-- product name -->
+        <div>
+            <label>Product Name:</label>
+            <input type="text" name="name" value="{{ product.name }}" required>
+        </div>
+
+        <!-- product category -->
+        <div>
+            <label>Category:</label>
+            <input type="text" name="category" value="{{ product.category }}" required>
+        </div>
+
+        <!-- product price -->
+        <div>
+            <label>Price (£):</label>
+            <input type="number" name="price" value="{{ product.price }}" step="0.01" required>
+        </div>
+
+        <!-- product description -->
+        <div>
+            <label>Description:</label>
+            <textarea name="description">{{ product.description }}</textarea>
+        </div>
+
+        <!-- show image (if one is uploaded)-->
+        {% if product.image_filename %}
+            <div>
+                <p><strong>Current Image:</strong></p>
+                <img src="{{ url_for('static', filename='uploads/' + product.image_filename) }}" width="150" alt="Product Image">
+            </div>
+        {% else %}
+            <p>No image available.</p>
+        {% endif %}
+
+        <!-- new image upload -->
+        <div>
+            <label>Upload New Image:</label>
+            <input type="file" name="image">
+        </div>
+
+        <button type="submit">Update Product</button>
+    </form>
+
+    <!-- cancel button -->
+    <a href="{{ url_for('product_routes.show_products_page') }}">Cancel</a>
+{% endblock %}

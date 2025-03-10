@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login - Jack's Healthy Food Shop{% endblock %}
+
+{% block content %}
+    <h1>Admin Login</h1>
+
+    <!-- displays messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- login form -->
+    <form action="{{ url_for('auth_routes.login') }}" method="POST" class="login-form">
+        <div>
+            <label>Email:</label>
+            <input type="email" name="email" required>
+        </div>
+
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password" required>
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <a href="{{ url_for('home') }}">Back to Homepage</a>
+{% endblock %}
+

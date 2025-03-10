@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- dynamic page title (overridden by templates) -->
+    <title>{% block title %}Jack's Healthy Food Shop{% endblock %}</title>
+
+    <!-- link to external stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <!-- page header (contains navigation menu) -->
+    <header>
+        <h1>Jack's Healthy Food Shop</h1>
+
+        <!-- navigation bar (links to different pages) -->
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('product_routes.show_products_page') }}">Products</a>
+
+            <!-- shows "Logout" if admin is logged in, otherwise it shows login -->
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('auth_routes.logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('auth_routes.login') }}">Login</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <!-- main content area (overridden by templates) -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>

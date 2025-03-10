@@ -1,0 +1,70 @@
+{% extends "base.html" %}  <!-- inherits from base.html -->
+
+{% block title %}Home - Jack's Healthy Food Shop{% endblock %}  <!-- page title -->
+
+{% block content %} 
+
+<!-- homepage background image styling -->
+<style>
+    body {
+        background: url("{{ url_for('static', filename='images/background.jpg') }}") no-repeat center center fixed;
+        background-size: cover;
+        color: white; 
+        margin: 0;
+        padding: 0;
+    }
+
+    /* adds a dark overlay for better readability */
+    .content-overlay {
+        max-width: 800px;
+        margin: 50px auto;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.6); 
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /
+    }
+
+    h2, h3, p {
+        margin-bottom: 15px;
+    }
+
+    /* make links stand out on dark background */
+    a {
+        color: #ffcc00;
+        font-weight: bold;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+
+<div class="content-overlay">
+    <h2>Welcome to Jack's Healthy Food Shop!</h2>
+
+    <p>
+        At Jack's Healthy Food Shop, we are committed to providing fresh, organic, and local
+        products to help you live a healthy life. Whether you're looking for snacks, organic 
+        produce, or dried goods, we've got you covered. Our mission is to promote healthy eating habits
+        for everyone.
+    </p>
+
+    
+    <h3>Where to find us:</h3>
+    <p>📍 22 Pennywell, Feniton, Devon, HT1 2AB, England</p>
+
+   
+    <h3>When are we open?</h3>
+    <p>🕒 Open Hours: Monday - Friday: 9 AM - 3 PM</p>
+
+    
+    <h3>Contact Us</h3>
+    <p>
+        📧 Email: <a href="mailto:contact@jackshealthfood.com">contact@jackshealthfood.com</a> <br>
+        📞 Phone: 01404 53722
+    </p>
+</div>
+
+{% endblock %}
